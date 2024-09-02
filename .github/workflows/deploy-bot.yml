@@ -1,0 +1,19 @@
+name: Deploy Telegram Bot
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: pip install python-telegram-bot
+      - name: Deploy bot
+        run: python bot.py
+        env:
+          7008404300:AAFdiNF-5cKbDo3DN2xpIv_8ZmlfSKd3bck: ${{ secrets.TELEGRAM_API_TOKEN }}
